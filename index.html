@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отзыв о ресторане</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            color: #e0e0e0;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 60px;
+            background: #1f1f1f;
+            border: 2px solid #333;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 3px solid #2a2a2a;
+            padding-bottom: 30px;
+        }
+
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 15px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .review-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: #b8b8b8;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 15px;
+        }
+
+        .stars {
+            font-size: 32px;
+            color: #d4af37;
+            letter-spacing: 5px;
+        }
+
+        .rating-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .review-content {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #c8c8c8;
+            margin: 40px 0;
+            text-align: justify;
+            font-weight: 300;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid #2a2a2a;
+        }
+
+        .pdf-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .pdf-button:hover {
+            background: #2a2a2a;
+            border-color: #555;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .decorative-line {
+            width: 100px;
+            height: 2px;
+            background: #d4af37;
+            margin: 30px auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+                width: 85%;
+            }
+
+            .restaurant-name {
+                font-size: 36px;
+            }
+
+            .review-title {
+                font-size: 22px;
+            }
+
+            .review-content {
+                font-size: 16px;
+            }
+
+            .pdf-button {
+                padding: 18px 40px;
+                font-size: 16px;
+            }
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="header">
+    <h1 class="restaurant-name" id="restaurant-name">The Бык</h1>
+    <div class="decorative-line"></div>
+    <h2 class="review-title" id="review-title">Изысканный ужин в сердце города</h2>
+   </div>
+   <div class="rating">
+    <div class="stars">
+     ★★★★★
+    </div>
+    <div class="rating-text" id="rating-text">
+     5/5
+    </div>
+   </div>
+   <div class="review-content" id="review-text">
+    Посещение ресторана "The Бык" стало настоящим гастрономическим открытием. Атмосфера заведения погружает в мир элегантности и утонченности с первых минут. Интерьер выполнен в темных тонах с акцентами золота, что создает ощущение роскоши и уюта одновременно. Меню представляет собой идеальное сочетание. Каждое блюдо — это произведение искусства, где вкус и презентация находятся в абсолютной гармонии. Обслуживание на высшем уровне: внимательный персонал, который знает каждую деталь меню и может дать профессиональные рекомендации.
+   </div>
+   <div class="cta-section"><a href="org.pdf" class="pdf-button" id="pdf-button" target="_blank" rel="noopener noreferrer">Читать полный обзор (PDF)</a>
+   </div>
+  </div>
+  <script>
+        const defaultConfig = {
+            restaurant_name: "La Maison Noir",
+            review_title: "Изысканный ужин в сердце города",
+            review_text: "Посещение ресторана La Maison Noir стало настоящим гастрономическим открытием. Атмосфера заведения погружает в мир элегантности и утонченности с первых минут. Интерьер выполнен в темных тонах с акцентами золота, что создает ощущение роскоши и уюта одновременно. Меню представляет собой идеальное сочетание классической французской кухни с современными интерпретациями. Каждое блюдо — это произведение искусства, где вкус и презентация находятся в абсолютной гармонии. Обслуживание на высшем уровне: внимательный персонал, который знает каждую деталь меню и может дать профессиональные рекомендации.",
+            rating_text: "5/5",
+            button_text: "Читать полный обзор (PDF)",
+            background_color: "#1a1a1a",
+            text_color: "#e0e0e0",
+            accent_color: "#d4af37",
+            button_color: "#000000",
+            font_family: "Lato"
+        };
+
+        async function onConfigChange(config) {
+            const restaurantName = config.restaurant_name || defaultConfig.restaurant_name;
+            const reviewTitle = config.review_title || defaultConfig.review_title;
+            const reviewText = config.review_text || defaultConfig.review_text;
+            const ratingText = config.rating_text || defaultConfig.rating_text;
+            const buttonText = config.button_text || defaultConfig.button_text;
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const accentColor = config.accent_color || defaultConfig.accent_color;
+            const buttonColor = config.button_color || defaultConfig.button_color;
+            const fontFamily = config.font_family || defaultConfig.font_family;
+
+            document.getElementById('restaurant-name').textContent = restaurantName;
+            document.getElementById('review-title').textContent = reviewTitle;
+            document.getElementById('review-text').textContent = reviewText;
+            document.getElementById('rating-text').textContent = ratingText;
+            document.getElementById('pdf-button').textContent = buttonText;
+
+            document.body.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #0a0a0a 100%)`;
+            document.body.style.color = textColor;
+            document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+            
+            document.querySelector('.review-content').style.color = textColor;
+            document.querySelector('.stars').style.color = accentColor;
+            document.querySelector('.decorative-line').style.background = accentColor;
+            document.querySelector('.pdf-button').style.background = buttonColor;
+            document.querySelector('.pdf-button').style.color = textColor;
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.accent_color || defaultConfig.accent_color,
+                            set: (value) => {
+                                config.accent_color = value;
+                                window.elementSdk.setConfig({ accent_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.button_color || defaultConfig.button_color,
+                            set: (value) => {
+                                config.button_color = value;
+                                window.elementSdk.setConfig({ button_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["restaurant_name", config.restaurant_name || defaultConfig.restaurant_name],
+                    ["review_title", config.review_title || defaultConfig.review_title],
+                    ["review_text", config.review_text || defaultConfig.review_text],
+                    ["rating_text", config.rating_text || defaultConfig.rating_text],
+                    ["button_text", config.button_text || defaultConfig.button_text]
+                ])
+            });
+        }
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'996de4265512d282',t:'MTc2MTg1ODU0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
